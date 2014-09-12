@@ -11,7 +11,7 @@
 	<div class="container">
 		<form class="form-horizontal" role="form">
 			<fieldset>
-				<legend>Task1</legend>
+				<legend><h1>Task1</h1></legend>
 				<div class="form-group">
 					<label for="exampleInput" class = "col-md-2 control-label">文字输入</label>
 					<input type="text" class="form-control " id = "inputText" placeholder = "文字输入" style = "width : 50%">
@@ -19,7 +19,7 @@
 				<div class="form-group">
 					<label for="exampleDate" class = "col-md-2 control-label">日期选择</label>
 					<div class="input-group date form_datetime col-md-5" data-date="2014-09-12T00:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-						<input type="text" class="form-control" size = "16" value = "" readonly>
+						<input type="text" class="form-control" id = "inputDate"size = "16" value = "" readonly>
 						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>	
 					</div>
 					<input type="hidden" id="dtp_input1" value="" /><br/>
@@ -36,9 +36,8 @@
 				</div>
 
 				<div class="form-group">
-					<h1>富文本编辑器</h1>
+					<p><strong>富文本编辑器</strong></p>
 					<textarea name="content" id="content_1" style = "width:700px;height:300px;">
-						&lt;strong&gt;HTML内容&lt;/strong&gt;
 					</textarea>
 				</div>
 				<div class="container">
@@ -47,17 +46,17 @@
 							<p>单选框</p>
 							<div class="radio">
 								<label>
-									<input type="radio" name = "sex" value = "boy" checked> 程序猿
+									<input type="radio" name = "sex" value = "boy" checked>boy 
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name = "sex" value = "girl"> 程序媛
+									<input type="radio" name = "sex" value = "girl">girl 
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name = "sex" value = "other"> Tailand 
+									<input type="radio" name = "sex" value = "other"> other 
 								</label>
 							</div>
 						</div>
@@ -65,22 +64,22 @@
 							<p>复选框</p>	
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" value = "A" checked>A
+									<input type="checkbox" name = "letter" value = "A" checked>A
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" value = "B">B
+									<input type="checkbox" name = "letter" value = "B">B
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" value = "C">C
+									<input type="checkbox" name = "letter" value = "C">C
 								</label>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" value = "D">D
+									<input type="checkbox" name = "letter" value = "D">D
 								</label>
 							</div>
 						</div>
@@ -91,7 +90,7 @@
 
 
 				<div class="form-group">
-					<button class="btn btn-primary" id = "button_1">打印表单</button>
+					<button class="btn btn-primary" type = "button" id = "button_1">打印表单</button>
 				</div>
 			</fieldset>
 
@@ -131,10 +130,20 @@
     }).prop('disabled', !$.support.fileInput)
     .parent().addClass($.support.fileInput ? undefined : 'disabled');
     console.log("执行了上传");
-    
+
     $('#button_1').click(function(){
     	var inputText = $('#inputText').val();
-    	console.log(inputText);
+    	var inputDate = $('#inputDate').val();
+    	var allRadio = $('input[name = sex]:checked').val();
+    	var allCheckBox;
+    	$('input[name = letter]:checked').each(function(){
+    		allCheckBox += $(this).val() + ",";
+    	})
+    	console.log("文字输入是：" + inputText);
+    	console.log("date:" + inputDate);
+    	console.log("编辑器:" + editor.text());
+    	console.log("被选中的有:" + allRadio);
+    	console.log("复选框选中的有:" + allCheckBox);
     });
 });
 	var editor;
