@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>task1</title>
+	<link href="todc-bootstrap/css/bootstrap.min.css"rel="stylesheet"  media = "screen">
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="kindeditor-4.1.10/themes/default/default.css">
+</head>
+<body>
+	<div class="container">
+		<form class="form-horizontal" role="form">
+			<fieldset>
+				<legend>Task1</legend>
+				<div class="form-group">
+					<label for="exampleInput" class = "col-md-2 control-label">文字输入</label>
+					<input type="text" class="form-control " id = "inputText" placeholder = "文字输入" style = "width : 50%">
+				</div>
+				<div class="form-group">
+					<label for="exampleDate" class = "col-md-2 control-label">日期选择</label>
+					<div class="input-group date form_datetime col-md-5" data-date="2014-09-12T00:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+						<input type="text" class="form-control" size = "16" value = "" readonly>
+						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>	
+					</div>
+					<input type="hidden" id="dtp_input1" value="" /><br/>
+				</div>
+
+				<div class="form-group">
+					<label for="exampleImg" class = "col-md-2 control-label">图片上传</label>
+					<div class="progress progress-striped active" id = "progress">
+						<div class="progress-bar progress-bar-success" role ="progressbar" aira-valuenow = "60" aria-valuemin = "0"
+						aria-valuemax = "100" style = "width:0%;">
+						<span class="sr-only">40% complete</span></div>
+					</div>
+					<input type="file" id="fileupload" name = "files[]" data-url = "server/php/" multipl>
+				</div>
+
+				<div class="form-group">
+					<h1>富文本编辑器</h1>
+					<textarea name="content" id="content_1" style = "width:700px;height:300px;">
+						&lt;strong&gt;HTML内容&lt;/strong&gt;
+					</textarea>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="form-group col-md-6">
+							<p>单选框</p>
+							<div class="radio">
+								<label>
+									<input type="radio" name = "sex" value = "boy" checked> 程序猿
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name = "sex" value = "girl"> 程序媛
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name = "sex" value = "other"> Tailand 
+								</label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<p>复选框</p>	
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value = "A" checked>A
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value = "B">B
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value = "C">C
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" value = "D">D
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+
+
+
+				<div class="form-group">
+					<button class="btn btn-primary" id = "button_1">打印表单</button>
+				</div>
+			</fieldset>
+
+		</form>
+	</div>
+
+	<script src = "todc-bootstrap/js/jquery-2.1.1.js" charset = "UTF-8"></script>
+	<script src = "todc-bootstrap/js/bootstrap.min.js"></script>
+	<script src = "js/bootstrap-datetimepicker.min.js" charset = "UTF-8"></script>
+	<script src = "js/locales/bootstrap-datetimepicker.fr.js" charset = "UTF-8"></script>
+	<script src = "kindeditor-4.1.10/kindeditor-min.js" charset = "UTF-8"></script>
+	<script src = "kindeditor-4.1.10/lang/zh_CN.js"></script>
+	<script src = "js/vendor/jquery.ui.widget.js"></script>
+	<script src = "js/jquery.iframe-transport.js"></script>
+	<script src = "js/jquery.fileupload.js"></script>
+	<script>
+	$(function () {
+		'use strict';
+    // Change this to the location of your server-side upload handler:
+    var url = window.location.hostname === 'blueimp.github.io' ?
+    '//jquery-file-upload.appspot.com/' : 'server/php/';
+    $('#fileupload').fileupload({
+    	url: url,
+    	dataType: 'json',
+    	done: function (e, data) {
+    		$.each(data.result.files, function (index, file) {
+    			$('<p/>').text(file.name).appendTo('#files');
+    		});
+    	},
+    	progressall: function (e, data) {
+    		var progress = parseInt(data.loaded / data.total * 100, 10);
+    		$('#progress .progress-bar').css(
+    			'width',
+    			progress + '%'
+    			);
+    	}
+    }).prop('disabled', !$.support.fileInput)
+    .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    console.log("执行了上传");
+    
+    $('#button_1').click(function(){
+    	var inputText = $('#inputText').val();
+    	console.log(inputText);
+    });
+});
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
+	});
+	$(".form_datetime").datetimepicker({
+		weekStart:1,
+		todayBtn:1,
+		autoclose:1,
+		todayHighLight:1,
+		startView:2,
+		forceParse:0,
+		showMeridian:1
+	});
+
+
+	</script>
+</body>
+</html>
