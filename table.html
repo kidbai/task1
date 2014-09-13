@@ -3,190 +3,152 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>task1</title>
-	<link href="todc-bootstrap/css/bootstrap.min.css"rel="stylesheet"  media = "screen">
-	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-	<link href="kindeditor-4.1.10/themes/default/default.css" rel="stylesheet" >
-	<link href="css/demo.css" rel="stylesheet" >
-	<link href="css/uploader.css" rel="stylesheet" >
-	<style>
-	.bar{
-		height: 18px;
-		background:green;
-	}
-	</style>
+	<link href="todc-bootstrap/css/bootstrap.min.css" rel="stylesheet"  media = "screen"/>
+	<link href="todc-bootstrap/css/todc-bootstrap.min.css" rel="stylesheet"  media = "screen"/>
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"/>
+	<link href="kindeditor-4.1.10/themes/default/default.css" rel="stylesheet" />
+	<link href="css/demo.css" rel="stylesheet" />
+	<link href="css/uploader.css" rel="stylesheet" />
 </head>
 <body>
-	<div class="container">
-		<form class="form-horizontal" role="form">
-			<fieldset>
-				<legend><h1>Task1</h1></legend>
-				<!-- text input -->
-				<div class="form-group">
-					<label for="exampleInput" class = "col-md-2 control-label">文字输入</label>
-					<input type="text" class="form-control " id = "inputText" placeholder = "文字输入" style = "width : 50%">
-				</div>
+<form class="form-horizontal" role="form">
+		<h1>Task1</h1>
+		<!-- text input -->
+		<div class="form-group">
+			<label for="exampleInput" class="col-md-2 control-label">文字输入</label>
+			<div class="col-md-5">
+				<input type="text" class="form-control " id="exampleInput" placeholder="文字输入"/>
+			</div>
+		</div>
 
-				<!-- choose date -->
-				<div class="form-group">
-					<label for="exampleDate" class = "col-md-2 control-label">选择日期</label>
-					<div class="input-group date form_datetime col-md-5" data-date="2014-09-12T00:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-						<input type="text" class="form-control" id = "inputDate"size = "16" value = "" readonly>
-						<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>	
-					</div>
-					<input type="hidden" id="dtp_input1" value="" /><br/>
-				</div>
-				
-				<!-- img upload -->
-				<div class="container demo-wrapper">
-					<div class="row demo-columns">
-						<div class="col-md-6">
-							<!-- D&D Zone-->
-							<div id="drag-and-drop-zone" class="uploader">
-								<div>Drag &amp; Drop Images Here</div>
-								<div class="or">-or-</div>
-								<div class="browser">
-									<label>
-										<span>Click to open the file Browser</span>
-										<input type="file" name="files[]" multiple="multiple" title='Click to add Files'>
-									</label>
-								</div>
-							</div>
-							<!-- /D&D Zone -->
+		<!-- choose date -->
+		<div class="form-group">
+			<label for="exampleDate" class = "col-md-2 control-label">选择日期</label>
+			<div class="col-md-5 input-group date form_datetime" data-date="2014-09-12T00:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1" style = "padding-right:15px; padding-left:15px;">
+				<input type="text" class="form-control" id="inputDate" size="16" value="" readonly/>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>	
+			</div>
+			<input type="hidden" id="dtp_input1" value="" /><br/>
+		</div>
 
-							<!-- Debug box -->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Debug</h3>
-								</div>
-								<div class="panel-body demo-panel-debug">
-									<ul id="demo-debug">
-									</ul>
-								</div>
-							</div>
-							<!-- /Debug box -->
-						</div>
-						<!-- / Left column -->
+		<!-- img upload -->
+		<div class="form-group">
+			<div class="col-md-10 col-md-offset-2" style = "padding-left:0px;padding-right:0px;">
+				<!-- d&d zone-->
+				<div id="drag-and-drop-zone" class="col-md-1">
+					<div class="btn btn-default btn-sm browser">
+						<label>
+							<span>上传图片</span>						
+					 		<input type="file" name="files[]" multiple="multiple" style = "opacity:0;width:70px;"/>
+						</label>
 					</div>
 				</div>
-
-						<div class="col-md-6">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Uploads</h3>
-								</div>
-								<div class="panel-body demo-panel-files" id='demo-files'>
-									<span class="demo-note">No Files have been selected/droped yet...</span>
-								</div>
-							</div>
-						</div>
-						<!-- / Right column -->
-					</div>
-				</div>
-
-				<!-- kindeditor -->
-				<div class="form-group">
-					<p><strong>富文本编辑器</strong></p>
-					<textarea name="content" id="content_1" style = "width:700px;height:300px;">
-					</textarea>
-				</div>
-
-				<!-- checkbox radio -->
-				<div class="container">
-					<div class="row">
-						<div class="form-group col-md-6">
-							<p>单选框</p>
-							<div class="radio">
-								<label>
-									<input type="radio" name = "sex" value = "boy" checked>boy 
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name = "sex" value = "girl">girl 
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name = "sex" value = "other"> other 
-								</label>
-							</div>
-						</div>
-						<div class="form-group col-md-6">
-							<p>复选框</p>	
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id = "letter" name = "letter" value = "A" checked>A
-								</label>
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox"  id = "letter" name = "letter" value = "B">B
-								</label>
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox"  id = "letter"  name = "letter" value = "C">C
-								</label>
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox"  id = "letter"  name = "letter" value = "D">D
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-
-
-
-				<div class="form-group">
-					<button class="btn btn-primary" type = "button" id = "button_1" data-toggle = "modal" data-target = "#showModal">打印表单</button>
-				</div>
-
-				<!-- modal -->
-				<div class="modal fade" id = "showModal" tabindex = "-1" role = "dialog" aria-labelledby = "modalLabel"
-				aria-hidden = "true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button class="close" type = "button" data-dismiss = "modal" aria-hidden = "true">&times;</button>
-							<div class="modal-title">
-								<h4>在控制台打印的信息</h4>
-							</div>
-						</div>
-
-						<div class="modal-body">
-							<p id = "showInfo"></p>
-						</div>
+				<div class="col-md-5">
+					<div id='demo-files'>
+						<span class="demo-note"></span>
 					</div>
 				</div>
 			</div>
-			<p class = "hidden" id = "temp"></p>
-		</fieldset>
+		</div>
+		
 
-	</form>
-</div>
 
-<script src = "http://code.jquery.com/jquery-1.10.1.min.js" charset = "UTF-8"></script>
-<script src = "http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src = "todc-bootstrap/js/bootstrap.min.js"></script>
+		<!-- kindeditor -->
+		<div class="form-group" style="padding-left:250px;">
+			<p style="padding-left:170px;"><strong>富文本编辑器</strong></p>
+				<textarea name="content" id="content_1" style="width:600px;height:300px;">
+				</textarea>
+		</div>
+
+		<!-- checkbox radio -->
+		<div class="form-group">
+			<div class="col-md-2 col-md-offset-2">
+				<p><strong>单选框</strong></p>
+				<div class="checkbox-inline">
+					<label>
+						<input type="radio" name="sex" value="boy" checked/>boy 
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="radio" name="sex" value="girl"/>girl 
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="radio" name="sex" value="other"/> other 
+					</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<!--checkbox -->
+			<p><strong>复选框</strong></p>	
+			<div class="checkbox-inline">
+				<label>
+					<input type="checkbox" id="letter" name="letter" value="A" checked/>A
+				</label>
+			</div>
+			<div class="checkbox-inline">
+				<label>
+					<input type="checkbox"  id="letter" name="letter" value="B"/>B
+				</label>
+			</div>
+			<div class="checkbox-inline">
+				<label>
+					<input type="checkbox"  id="letter"  name="letter" value="C"/>C
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"  id="letter"  name="letter" value="D"/>D
+				</label>
+			</div>
+			</div>	
+		</div>
+
+		
+
+
+		
+		<!-- submit info -->
+		<div class="form-group">
+			<button class="btn btn-primary col-md-1 col-md-offset-4" type="button" id="button_1">打印表单</button>
+		</div>
+
+		<!-- modal -->
+		<div class="modal fade" id="showModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" type="button"  data-dismiss="modal" >&times;</button>
+						<div class="modal-title">
+							<h4>在控制台打印的信息</h4>
+						</div>
+					</div>
+					<div class="modal-body">
+						<p id="showInfo"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	<p class = "hidden" id = "temp"></p>
+</form>
+
+<script src = "http://code.jquery.com//jquery-2.1.1.min.js" charset = "UTF-8"></script>
+<script src = "http://code.jquery.com//jquery-migrate-1.2.1.min.js" charset = "UTF-8"></script>
+<script src = "todc-bootstrap/todc-js/bootstrap.min.js"></script>
 <script src = "js/bootstrap-datetimepicker.min.js" charset = "UTF-8"></script>
 <script src = "js/locales/bootstrap-datetimepicker.fr.js" charset = "UTF-8"></script>
 <script src = "kindeditor-4.1.10/kindeditor-min.js" charset = "UTF-8"></script>
 <script src = "kindeditor-4.1.10/lang/zh_CN.js"></script>
-<!-- 文件上传 
-<script src = "js/vendor/jquery.ui.widget.js"></script>
-<script src = "js/jquery.iframe-transport.js"></script>
-<script src = "js/jquery.fileupload.js"></script>
--->
 <script src = "js/demo.min.js"></script>
 <script src = "js/dmuploader.min.js"></script>
 <script>
 $(function () {
 	
-
+	
 	$("#button_1").click(function(){
+		$("#showModal").modal();
 		var inputText = $("#inputText").val();
 		var inputDate = $("#inputDate").val();
 		var allRadio = $("input[name = sex]:checked").val();
@@ -223,58 +185,58 @@ $(".form_datetime").datetimepicker({
 });
 
 $('#drag-and-drop-zone').dmUploader({
-        url: 'upload.php',
-        dataType: 'json',
-        allowedTypes: 'image/*',
-        /*extFilter: 'jpg;png;gif',*/
-        onInit: function(){
-          $.danidemo.addLog('#demo-debug', 'default', 'Plugin initialized correctly');
-        },
-        onBeforeUpload: function(id){
-          $.danidemo.addLog('#demo-debug', 'default', 'Starting the upload of #' + id);
+	url: 'upload.php',
+	dataType: 'json',
+	allowedTypes: 'image/*',
+	/*extFilter: 'jpg;png;gif',*/
+	onInit: function(){
+		$.danidemo.addLog('#demo-debug', 'default', 'Plugin initialized correctly');
+	},
+	onBeforeUpload: function(id){
+		$.danidemo.addLog('#demo-debug', 'default', 'Starting the upload of ' + id);
 
-          $.danidemo.updateFileStatus(id, 'default', 'Uploading...');
-        },
-        onNewFile: function(id, file){
-          $.danidemo.addFile('#demo-files', id, file);
-          $("#temp").text(file.name);
-        },
-        onComplete: function(){
-          $.danidemo.addLog('#demo-debug', 'default', 'All pending tranfers completed');
-        },
-        onUploadProgress: function(id, percent){
-          var percentStr = percent + '%';
+		$.danidemo.updateFileStatus(id, 'default', 'Uploading...');
+	},
+	onNewFile: function(id, file){
+		$.danidemo.addFile('#demo-files', id, file);
+		$("#temp").text(file.name);
+	},
+	onComplete: function(){
+		$.danidemo.addLog('#demo-debug', 'default', 'All pending tranfers completed');
+	},
+	onUploadProgress: function(id, percent){
+		var percentStr = percent + '%';
 
-          $.danidemo.updateFileProgress(id, percentStr);
-        },
-        onUploadSuccess: function(id, data){
-          $.danidemo.addLog('#demo-debug', 'success', 'Upload of file #' + id + ' completed');
+		$.danidemo.updateFileProgress(id, percentStr);
+	},
+	onUploadSuccess: function(id, data){
+		$.danidemo.addLog('#demo-debug', 'success', 'Upload of file ' + id + ' completed');
 
-          $.danidemo.addLog('#demo-debug', 'info', 'Server Response for file #' + id + ': ' + JSON.stringify(data));
+		$.danidemo.addLog('#demo-debug', 'info', 'Server Response for file ' + id + ': ' + JSON.stringify(data));
 
-          $.danidemo.updateFileStatus(id, 'success', 'Upload Complete');
+		$.danidemo.updateFileStatus(id, 'success', 'Upload Complete');
 
-          $.danidemo.updateFileProgress(id, '100%');
-        },
-        onUploadError: function(id, message){
-          $.danidemo.updateFileStatus(id, 'error', message);
+		$.danidemo.updateFileProgress(id, '100%');
+	},
+	onUploadError: function(id, message){
+		$.danidemo.updateFileStatus(id, 'error', message);
 
-          $.danidemo.addLog('#demo-debug', 'error', 'Failed to Upload file #' + id + ': ' + message);
-        },
-        onFileTypeError: function(file){
-          $.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' cannot be added: must be an image');
-        },
-        onFileSizeError: function(file){
-          $.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' cannot be added: size excess limit');
-        },
+		$.danidemo.addLog('#demo-debug', 'error', 'Failed to Upload file ' + id + ': ' + message);
+	},
+	onFileTypeError: function(file){
+		$.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' cannot be added: must be an image');
+	},
+	onFileSizeError: function(file){
+		$.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' cannot be added: size excess limit');
+	},
         /*onFileExtError: function(file){
           $.danidemo.addLog('#demo-debug', 'error', 'File \'' + file.name + '\' has a Not Allowed Extension');
-        },*/
-        onFallbackMode: function(message){
-          $.danidemo.addLog('#demo-debug', 'info', 'Browser not supported(do something else here!): ' + message);
-        }
+      },*/
+      onFallbackMode: function(message){
+      	$.danidemo.addLog('#demo-debug', 'info', 'Browser not supported(do something else here!): ' + message);
+      }
 
-      });
+  });
 
 
 </script>
