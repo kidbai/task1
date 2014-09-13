@@ -162,6 +162,7 @@
 					</div>
 				</div>
 			</div>
+			<p class = "hidden" id = "temp"></p>
 		</fieldset>
 
 	</form>
@@ -191,16 +192,18 @@ $(function () {
 		var allRadio = $("input[name = sex]:checked").val();
     	//var img;   图片信息
 
-    	var allCheckBox;
+    	var allCheckBox = "";
     	$("input[name = letter]:checked").each(function(){
     		allCheckBox += $(this).val() + ",";
     	});
+    	var imgName = $("#temp").text();
     	console.log("文字输入是：" + inputText);
     	console.log("Date:" + inputDate);
     	console.log("编辑器:" + editor.text());
     	console.log("单选框选中的有:" + allRadio);
     	console.log("复选框选中的有:" + allCheckBox);
-    	$("#showInfo").text("文字输入:" + inputText + "," + "日期:" + inputDate + "," +  "单选框:" + allRadio + "," + "复选框:" +  allCheckBox + ".");
+    	console.log("图片名称:" + imgName);
+    	$("#showInfo").text("文字输入:" + inputText + "," + "日期:" + inputDate + "," +  "单选框:" + allRadio + "," + "复选框:" + allCheckBox + "," + "图片名称" + imgName);
     });
 });
 var editor;
@@ -234,6 +237,7 @@ $('#drag-and-drop-zone').dmUploader({
         },
         onNewFile: function(id, file){
           $.danidemo.addFile('#demo-files', id, file);
+          $("#temp").text(file.name);
         },
         onComplete: function(){
           $.danidemo.addLog('#demo-debug', 'default', 'All pending tranfers completed');
@@ -269,6 +273,7 @@ $('#drag-and-drop-zone').dmUploader({
         onFallbackMode: function(message){
           $.danidemo.addLog('#demo-debug', 'info', 'Browser not supported(do something else here!): ' + message);
         }
+
       });
 
 
