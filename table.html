@@ -16,7 +16,7 @@
 		<!-- text input -->
 		<div class="form-group">
 			<label for="exampleInput" class="col-md-2 control-label">文字输入</label>
-			<div class="col-md-5">
+			<div class="col-md-5" style="padding:0%;">
 				<input type="text" class="form-control " id="exampleInput" placeholder="文字输入"/>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 		<!-- choose date -->
 		<div class="form-group">
 			<label for="exampleDate" class="col-md-2 control-label">选择日期</label>
-			<div class="col-md-5 input-group date form_datetime" data-date="2014-09-12T00:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1" style = "padding-right:15px; padding-left:15px;">
+			<div class="col-md-5 input-group date form_datetime" data-date="2014-09-12T00:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1" >
 				<input type="text" class="form-control" id="inputDate" size="16" value="" readonly/>
 				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>	
 			</div>
@@ -33,9 +33,9 @@
 
 		<!-- img upload -->
 		<div class="form-group">
-			<div class="col-md-10 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+			<div class="col-md-10 col-md-offset-2" style="padding:0%;">
 				<!-- d&d zone-->
-				<div id="drag-and-drop-zone" class="col-md-1">
+				<div id="drag-and-drop-zone" class="col-md-1" style="padding:0%;">
 					<div class="btn btn-default btn-sm browser">
 						<label>
 							<span>上传图片</span>						
@@ -54,17 +54,17 @@
 
 
 		<!-- kindeditor -->
-		<div class="form-group" style="padding-left:250px;">
-			<p style="padding-left:170px;"><strong>富文本编辑器</strong></p>
-				<textarea name="content" id="content_1" style="width:600px;height:300px;">
+		<div class="form-group">
+			<label class = "col-md-2 control-label">富文本编辑器</label>
+				<textarea name="content" id="content_1" style="width:612px;height:300px;">
 				</textarea>
 		</div>
 
 		<!-- checkbox radio -->
 		<div class="form-group">
-			<div class="col-md-2 col-md-offset-2">
-				<p><strong>单选框</strong></p>
-				<div class="checkbox-inline">
+				<label class="col-md-2 control-label">单选框</label>
+				<div class="con-md-5">
+					<div class="checkbox-inline">
 					<label>
 						<input type="radio" name="sex" value="boy" checked/>boy 
 					</label>
@@ -80,39 +80,35 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<!--checkbox -->
-			<p><strong>复选框</strong></p>	
-			<div class="checkbox-inline">
-				<label>
-					<input type="checkbox" id="letter" name="letter" value="A" checked/>A
-				</label>
+		</div><!--checkbox -->
+		<div class="form-group">
+			<label class="col-md-2 control-label">复选框</label>				
+			<div class="col-md-5">
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox" id="letter" name="letter" value="A" checked/>A
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox"  id="letter" name="letter" value="B"/>B
+					</label>
+				</div>
+				<div class="checkbox-inline">
+					<label>
+						<input type="checkbox"  id="letter"  name="letter" value="C"/>C
+					</label>
+				</div>
 			</div>
-			<div class="checkbox-inline">
-				<label>
-					<input type="checkbox"  id="letter" name="letter" value="B"/>B
-				</label>
-			</div>
-			<div class="checkbox-inline">
-				<label>
-					<input type="checkbox"  id="letter"  name="letter" value="C"/>C
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox"  id="letter"  name="letter" value="D"/>D
-				</label>
-			</div>
-			</div>	
 		</div>
-
+		
 		
 
 
 		
 		<!-- submit info -->
 		<div class="form-group">
-			<button class="btn btn-primary col-md-1 col-md-offset-4" type="button" id="button_1">打印表单</button>
+			<button class="btn btn-primary col-md-1 col-md-offset-2" type="button" id="button_1">打印表单</button>
 		</div>
 
 		<!-- modal -->
@@ -134,8 +130,8 @@
 	<p class="hidden" id="temp"></p>
 </form>
 
-<script src="http://code.jquery.com//jquery-2.1.1.min.js" charset = "UTF-8"></script>
-<script src="http://code.jquery.com//jquery-migrate-1.2.1.min.js" charset = "UTF-8"></script>
+<script src="todc-bootstrap/todc-js/jquery-2.1.1.min.js" charset = "UTF-8"></script>
+<script src="todc-bootstrap/todc-js/jquery-migrate-1.2.1.min.js" charset = "UTF-8"></script>
 <script src="todc-bootstrap/todc-js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datetimepicker.min.js" charset = "UTF-8"></script>
 <script src="js/locales/bootstrap-datetimepicker.fr.js" charset = "UTF-8"></script>
@@ -145,8 +141,10 @@
 <script src="js/dmuploader.min.js"></script>
 <script>
 $(function () {
-	
-	
+	if(null!=$(".ke-container")){
+		console.log("ke-container存在");
+		$(".ke-container").css({"width":"612px"});
+	}
 	$("#button_1").click(function(){
 		$("#showModal").modal();
 		var inputText = $("#inputText").val();
@@ -171,7 +169,7 @@ $(function () {
 var editor;
 KindEditor.ready(function(K) {
 	editor = K.create('textarea[name="content"]', {
-		allowFileManager : true
+		allowFileManager : true,
 	});
 });
 $(".form_datetime").datetimepicker({
